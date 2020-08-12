@@ -7,6 +7,4 @@ $ make build
 $ make run-local
 ````
 
-_dreaming of the world
-in which no more squids will be needlessly slaughtered
-for their ink_
+_"We dream of a world in which no more squids will be needlessly slaughtered for their ink."_
