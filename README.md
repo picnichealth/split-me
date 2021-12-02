@@ -7,8 +7,6 @@ $ make build
 $ make run-local
 ````
 
-_"We dream of a world in which no more squids will be needlessly slaughtered for their ink. - Arthur Troy Astorino III"_
-
 # Mission:
 ```
 Package the SplitMe!TM application into a Helm chart, 
@@ -108,3 +106,5 @@ kubectl port-forward <POD_NAME> 5000:<CONTAINER_PORT>
 ex: kubectl port-forward split-me-release-split-me-chart-6ddc588b5c-jtq6t 5000:5000
 ```
 12. Access the app @ `http://localhost:5000`!!
+
+"We dream of a world in which no more squids will be needlessly slaughtered for their ink. - Arthur Troy Astorino III"_
