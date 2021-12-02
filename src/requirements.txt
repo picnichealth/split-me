@@ -1,0 +1,6 @@
+Click==7.0
+Flask==0.12.4
+Jinja2==2.10
+MarkupSafe==1.0
+prometheus-client==0.12.0
+Werkzeug==2.0.2

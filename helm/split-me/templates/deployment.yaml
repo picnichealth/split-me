@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      name: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        name: {{ .Release.Name }}
+      annotations:
+        revision: {{ .Release.Revision | quote }}
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "15001"
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: localhost:15000/split-me:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 15001
+          readinessProbe:
+            httpGet:
+              scheme: HTTP
+              port: 15001
+              path: /
+            initialDelaySeconds: 5
+            timeoutSeconds: 5
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3

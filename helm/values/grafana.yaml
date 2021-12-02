@@ -1,0 +1,16 @@
+grafana.ini:
+  auth.anonymous:
+    enabled: true
+    org_role: Admin
+
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        type: prometheus
+        access: proxy
+        orgId: 1
+        url: http://prometheus-server
+        version: 1
+        editable: false

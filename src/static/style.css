@@ -1,0 +1,16 @@
+#logo {
+  float: right;
+  width: 132px;
+}
+
+.fields {
+  display: inline-block;
+}
+
+.fields > div {
+  padding: 12px;
+}
+
+button {
+  margin-right: 12px;
+}

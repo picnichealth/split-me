@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      name: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        name: {{ .Release.Name }}
+    spec:
+      volumes:
+        - name: registry
+          emptyDir: {}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: registry:2.7.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000
+              hostPort: 15000
+          volumeMounts:
+            - mountPath: /var/lib/registry/
+              name: registry
+          env:
+            - name: REGISTRY_HTTP_ADDR
+              value: 0.0.0.0:5000
+          readinessProbe:
+            httpGet:
+              scheme: HTTP
+              host: localhost
+              port: 15000
+              path: /v2
+            initialDelaySeconds: 5
+            timeoutSeconds: 5
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3

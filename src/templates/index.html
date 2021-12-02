@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>SplitMe!™</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"/>
+  </head>
+  <body>
+    <h1>SplitMe!™</h1>
+    <p>The world's favorite way to split PDFs</p>
+    <form name="pdf-form">
+      <fieldset>
+        <legend>Time to Split!</legend>
+        <div class="fields">
+          <div>
+            <label for="pdf">PDF:</label>
+            <input id="pdf-input" name="pdf" type="file" accept="application/pdf"/>
+          </div>
+          <div>
+            <label for="page">Page to split after:</label>
+            <input id="page-input" name="page" type="number"/>
+          </div>
+
+          <div>
+            <button id="split">SplitMe!™</button>
+            <button id="lucky">I'm Feeling Lucky</button>
+          </div>
+        </div>
+        <img id="logo" src="{{ url_for('static', filename='logo.png') }}"/>
+      </fieldset>
+    </form>
+  </body>
+  <script src="//cdn.rawgit.com/satazor/SparkMD5/master/spark-md5.min.js"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
+</html>
